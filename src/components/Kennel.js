@@ -1,6 +1,6 @@
 import React from "react"
 import "./Kennel.css"
-import { Animal } from "./animal/Animal"
+// import { Animal } from "./animal/Animal"
 import { Customer } from "./Customers/Customer"
 import { Employee } from "./Employee/Employee"
 import { Location } from "./Location/Location"
