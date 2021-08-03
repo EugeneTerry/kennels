@@ -16,7 +16,7 @@ export const EmployeeProvider=(props)=> {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
-      }
+      },
       body: JSON.stringify(employeeObj)
     })
     .then(getemployees)
