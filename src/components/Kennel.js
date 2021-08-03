@@ -4,11 +4,13 @@ import { Animal } from "./animal/Animal"
 import { Customer } from "./Customers/Customer"
 import { Employee } from "./Employee/Employee"
 import { Location } from "./Location/Location"
+import { AnimalProvider } from "./animal/AnimalProvider"
+import { AnimalList } from "./animal/AnimalList"
 
 export const Kennel = () => (
   <>
     <h2>Nashville Kennels</h2>
-    <small>Loving care when you're not there.</small>
+    <medium>Loving care when you're not there.</medium>
     <address>
       <div>Visit Us at the Nashville North Location</div>
       <div>500 Puppy Way</div>
@@ -16,9 +18,9 @@ export const Kennel = () => (
     
     <h2>Animals</h2>
     <article className="animals">
-      <Animal />
-      <Animal />
-      <Animal />
+      <AnimalProvider>
+        <AnimalList />
+      </AnimalProvider>
     </article>
 
     <h2>Employees</h2>
