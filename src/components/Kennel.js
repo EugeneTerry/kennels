@@ -1,9 +1,5 @@
 import React from "react"
 import "./Kennel.css"
-// import { Animal } from "./animal/Animal"
-// import { Customer } from "./Customers/Customer"
-// import { Employee } from "./Employee/Employee"
-// import { Location } from "./Location/Location"
 import { AnimalProvider } from "./animal/AnimalProvider"
 import { AnimalList } from "./animal/AnimalList"
 import { EmployeeProvider } from "./Employee/EmployeeProvider"
@@ -12,6 +8,7 @@ import { CustomerProvider } from "./Customers/CustomerProvider"
 import { CustomerList } from "./Customers/CustomerList"
 import { LocationProvider } from "./Location/LocationProvider"
 import { LocationList } from "./Location/LocationList"
+import "./Location/Location.css"
 
 export const Kennel = () => (
   <>

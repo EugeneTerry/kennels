@@ -17,8 +17,8 @@ export const LocationList = () => {
       {locations.map((location) => {
         return (
           <div className="location" id={`location--${location.id}`}>
-            <div className="location__name">Name: {location.name}</div>
-            <div className="location__breed">Address: {location.address}</div>
+            <div className="location__name"> {location.name}</div>
+            <div className="location__breed"> {location.address}</div>
           </div>
         );
       })}
