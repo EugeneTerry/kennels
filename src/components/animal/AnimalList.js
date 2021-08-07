@@ -19,6 +19,8 @@ export const AnimalList = () => {
           <div className="animal" id={`animal--${animal.id}`}>
             <div className="animal__name">Name: {animal.name}</div>
             <div className="animal__breed">Breed: {animal.breed}</div>
+            <div className="animal__location">Location: {animal.location.name}</div>
+            <div className="animal__location">Customer: {animal.customer.name}</div>
           </div>
         );
       })}

@@ -16,7 +16,7 @@ export const EmployeeList = () => {
         return (
           <div className="employee" id={`employee--${employee.id}`}>
             <div className="employee__name">{employee.name}</div>
-            <div className="employee__location">{employee.locationId}</div>
+            <div className="employee__location">{employee.location.name}</div>
           </div>
         );
       })}
