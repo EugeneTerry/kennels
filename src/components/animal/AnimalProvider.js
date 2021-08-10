@@ -8,20 +8,30 @@ export const AnimalProvider = (props) => {
   const [animals, setAnimals] = useState([])
 
   const getAnimals = () => {
-      return fetch("http://localhost:8088/animals?_expand=location&_expand=customer")
+      return fetch("http://localhost:8088/animals?_expand=location&_expand=customer&_sort=location.id")
       .then(res => res.json())
       .then(setAnimals)
   }
 
-  const addAnimal = animalObj => {
-      return fetch("http://localhost:8088/animals", {
-          method: "POST",
-          headers: {
-              "Content-Type": "application/json"
-          },
-          body: JSON.stringify(animalObj)
-      })
-      .then(getAnimals)
+  const addAnimal = animal => {
+    return fetch("http://localhost:8088/animals", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(animal)
+    })
+    .then(responce => responce.json())
+
+//   const addAnimal = animalObj => {
+//       return fetch("http://localhost:8088/animals", {
+//           method: "POST",
+//           headers: {
+//               "Content-Type": "application/json"
+//           },
+//           body: JSON.stringify(animalObj)
+//       })
+//       .then(getAnimals)
   }
 
   /*
