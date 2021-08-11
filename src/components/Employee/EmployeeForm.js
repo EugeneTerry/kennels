@@ -34,7 +34,7 @@ export const EmployeeForm = () => {
     }else{
       const newEmployee ={
         name: employee.name,
-        location: locationId
+        locationId: locationId
       }
       addEmployee(newEmployee)
       .then(() => history.push("/employees"))
