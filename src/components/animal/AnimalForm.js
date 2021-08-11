@@ -40,7 +40,7 @@ export const AnimalForm = () => {
       const newAnimal ={
         name: animal.name,
         breed: animal.breed,
-        customer: customerId,
+        customerId: customerId,
         locationId: locationId
       }
       addAnimal(newAnimal)
