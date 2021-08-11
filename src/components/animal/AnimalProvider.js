@@ -21,7 +21,8 @@ export const AnimalProvider = (props) => {
         },
         body: JSON.stringify(animal)
     })
-    .then(responce => responce.json())
+    .then(response => response.json())
+    .then(getAnimals())
 
 //   const addAnimal = animalObj => {
 //       return fetch("http://localhost:8088/animals", {
