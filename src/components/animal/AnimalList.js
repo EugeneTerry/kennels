@@ -1,13 +1,14 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AnimalContext } from "./AnimalProvider";
 import "./Animal.css";
 import { useHistory } from "react-router-dom";
+import {Animal} from "./Animal"
+import { Link } from "react-router-dom";
 
 
 
-export const AnimalList = () => {
-  // This state changes when `getAnimals()` is invoked below
-  const history = useHistory()
+export const AnimalList = ({history}) => {
+
   const { animals, getAnimals } = useContext(AnimalContext);
 
   //useEffect - reach out to the world for something
@@ -24,6 +25,16 @@ export const AnimalList = () => {
       }>
             Add Animal
       </button>
+
+      <div className="animals">
+          {
+              animals.map(animal => <Link to={`/animals/detail/${animal.id}`}>
+                    { animal.name }
+                  </Link>
+              )
+          }
+      </div>
+{/* 
     <section className="animals">
       {animals.map((animal) => {
         return (
@@ -39,7 +50,7 @@ export const AnimalList = () => {
           </div>
         );
       })}
-    </section>
+    </section> */}
     </>
   );
 };
