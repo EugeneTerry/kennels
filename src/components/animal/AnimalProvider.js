@@ -1,30 +1,31 @@
-import React, { useState, createContext } from "react"
+import React, { useState, createContext } from "react";
 
 // The context is imported and used by individual components that need data
-export const AnimalContext = createContext()
+export const AnimalContext = createContext();
 
 // This component establishes what data can be used.
 export const AnimalProvider = (props) => {
-  const [animals, setAnimals] = useState([])
+  const [animals, setAnimals] = useState([]);
 
   const getAnimals = () => {
-      return fetch("http://localhost:8088/animals?_expand=location&_expand=customer&_sort=location.id")
-      .then(res => res.json())
-      .then(setAnimals)
-  }
+    return fetch(
+      "http://localhost:8088/animals?_expand=location&_expand=customer&_sort=location.id"
+    )
+      .then((res) => res.json())
+      .then(setAnimals);
+  };
 
-  const addAnimal = animal => {
+  const addAnimal = (animal) => {
     return fetch("http://localhost:8088/animals", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(animal)
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(animal),
     })
-    .then(response => response.json())
-    .then(getAnimals())
-
-  }
+      .then((response) => response.json())
+      .then(getAnimals());
+  };
 
   /*
       You return a context provider which has the
@@ -33,10 +34,14 @@ export const AnimalProvider = (props) => {
       allows any child elements to access them.
   */
   return (
-      <AnimalContext.Provider value={{
-          animals, getAnimals, addAnimal
-      }}>
-          {props.children}
-      </AnimalContext.Provider>
-  )
-}
+    <AnimalContext.Provider
+      value={{
+        animals,
+        getAnimals,
+        addAnimal,
+      }}
+    >
+      {props.children}
+    </AnimalContext.Provider>
+  );
+};

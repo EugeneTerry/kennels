@@ -1,31 +1,35 @@
-import React, {useState, createContext} from "react"
+import React, { useState, createContext } from "react";
 
-export const LocationContext = createContext()
-export const LocationProvider = (props) =>{
-  const [locations, setLocations ] = useState([])
+export const LocationContext = createContext();
+export const LocationProvider = (props) => {
+  const [locations, setLocations] = useState([]);
 
-  const getLocations =()=> {
+  const getLocations = () => {
     return fetch("http://localhost:8088/locations")
-    .then(res=>res.json())
-    .then(setLocations)
-  }
-  const addLocation = locationObj => {
+      .then((res) => res.json())
+      .then(setLocations);
+  };
+  const addLocation = (locationObj) => {
     return fetch("http://localhost:8088/locations", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(locationObj)
+      body: JSON.stringify(locationObj),
     })
-    .then(response => response.json())
-    .then(getLocations)
-  }
+      .then((response) => response.json())
+      .then(getLocations);
+  };
 
-  return(
-    <LocationContext.Provider value={{
-      locations, addLocation, getLocations
-    }}>
+  return (
+    <LocationContext.Provider
+      value={{
+        locations,
+        addLocation,
+        getLocations,
+      }}
+    >
       {props.children}
     </LocationContext.Provider>
-  )
-}
+  );
+};

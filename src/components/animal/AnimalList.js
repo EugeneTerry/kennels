@@ -2,13 +2,11 @@ import React, { useContext, useEffect, useState } from "react";
 import { AnimalContext } from "./AnimalProvider";
 import "./Animal.css";
 import { useHistory } from "react-router-dom";
-import {Animal} from "./Animal"
+import { Animal } from "./Animal";
 import { Link } from "react-router-dom";
 
-
-
 export const AnimalList = () => {
-  const history=useHistory()
+  const history = useHistory();
 
   const { animals, getAnimals } = useContext(AnimalContext);
 
@@ -21,18 +19,14 @@ export const AnimalList = () => {
   return (
     <>
       <h2>Animals</h2>
-      <button onClick={
-        () => history.push("/animals/create")}>
-            Add Animal
+      <button onClick={() => history.push("/animals/create")}>
+        Add Animal
       </button>
 
       <div className="animal">
-          {
-              animals.map(animal => <Link to={`/detail/${animal.id}`}>
-                    { animal.name }
-                  </Link>
-              )
-          }
+        {animals.map((animal) => (
+          <Link to={`/detail/${animal.id}`}>{animal.name}</Link>
+        ))}
       </div>
     </>
   );

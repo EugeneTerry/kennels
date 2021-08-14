@@ -4,7 +4,7 @@ import "./Location.css";
 import { useHistory } from "react-router-dom";
 
 export const LocationList = () => {
-  const history = useHistory()
+  const history = useHistory();
   // This state changes when `getAnimals()` is invoked below
   const { locations, getLocations } = useContext(LocationContext);
 
@@ -16,22 +16,20 @@ export const LocationList = () => {
 
   return (
     <>
-    <h2>Locations</h2>
-      <button onClick={
-        () => history.push("/locations/create")
-      }>
-            New Location
+      <h2>Locations</h2>
+      <button onClick={() => history.push("/locations/create")}>
+        New Location
       </button>
-    <section className="locations">
-      {locations.map((location) => {
-        return (
-          <div className="location" id={`location--${location.id}`}>
-            <div className="location__name"> {location.name}</div>
-            <div className="location__breed"> {location.address}</div>
-          </div>
-        );
-      })}
-    </section>
+      <section className="locations">
+        {locations.map((location) => {
+          return (
+            <div className="location" id={`location--${location.id}`}>
+              <div className="location__name"> {location.name}</div>
+              <div className="location__breed"> {location.address}</div>
+            </div>
+          );
+        })}
+      </section>
     </>
   );
 };
