@@ -20,8 +20,12 @@ export const LocationForm = () => {
 
   const handleClickSaveLocation = (event) => {
     event.preventDefault()
-      addLocation(newLocation)
-      .then(() => history.push("/locations"))
+    const newLocation ={
+      name: location.name,
+      address: location.address
+    }
+    addLocation(newLocation)
+    .then(() => history.push("/locations"))
     }
   
 

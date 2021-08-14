@@ -19,14 +19,18 @@ export const EmployeeProvider = (props) => {
       },
       body: JSON.stringify(employeeObj),
     })
-    .then(response => response.json())
-    .then(getEmployees())
+      .then((response) => response.json())
+      .then(getEmployees());
   };
   return (
-    <EmployeeContext.Provider value={{
-        employees, getEmployees, addEmployee
-      }}>
-        {props.children}
+    <EmployeeContext.Provider
+      value={{
+        employees,
+        getEmployees,
+        addEmployee,
+      }}
+    >
+      {props.children}
     </EmployeeContext.Provider>
   );
 };
