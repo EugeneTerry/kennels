@@ -17,6 +17,7 @@ export const CustomerList = () => {
           <div className="customer" id={`customer--${customer.id}`}>
             <div className="customer__name">{customer.name}</div>
             <div className="customer__address">{customer.address}</div>
+            <div className="customer__email">{customer.email}</div>
           </div>
         );
       })}
