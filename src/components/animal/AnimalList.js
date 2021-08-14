@@ -7,7 +7,8 @@ import { Link } from "react-router-dom";
 
 
 
-export const AnimalList = ({history}) => {
+export const AnimalList = () => {
+  const history=useHistory()
 
   const { animals, getAnimals } = useContext(AnimalContext);
 
@@ -21,8 +22,7 @@ export const AnimalList = ({history}) => {
     <>
       <h2>Animals</h2>
       <button onClick={
-        () => history.push("/animals/create")
-      }>
+        () => history.push("/animals/create")}>
             Add Animal
       </button>
 
