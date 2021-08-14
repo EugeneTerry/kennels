@@ -1,8 +1,10 @@
 import React, { useContext, useEffect } from "react";
 import { LocationContext } from "./LocationProvider";
 import "./Location.css";
+import { useHistory } from "react-router-dom";
 
 export const LocationList = () => {
+  const history = useHistory()
   // This state changes when `getAnimals()` is invoked below
   const { locations, getLocations } = useContext(LocationContext);
 
@@ -13,6 +15,13 @@ export const LocationList = () => {
   }, []);
 
   return (
+    <>
+    <h2>Locations</h2>
+      <button onClick={
+        () => history.push("/locations/create")
+      }>
+            New Location
+      </button>
     <section className="locations">
       {locations.map((location) => {
         return (
@@ -23,5 +32,6 @@ export const LocationList = () => {
         );
       })}
     </section>
+    </>
   );
 };

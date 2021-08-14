@@ -24,15 +24,6 @@ export const AnimalProvider = (props) => {
     .then(response => response.json())
     .then(getAnimals())
 
-//   const addAnimal = animalObj => {
-//       return fetch("http://localhost:8088/animals", {
-//           method: "POST",
-//           headers: {
-//               "Content-Type": "application/json"
-//           },
-//           body: JSON.stringify(animalObj)
-//       })
-//       .then(getAnimals)
   }
 
   /*
