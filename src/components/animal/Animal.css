@@ -2,11 +2,16 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  flex-direction: column;
 }
 
 .animal {
-    flex-basis: 28%;
-    margin: 1em;
-    padding: 1em;
-    border: 1px solid goldenrod;
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 28%;
+  margin: 1em;
+  padding: 1em;
+  flex-direction: column;
+  border: 1px solid goldenrod;
+  justify-content: space-between;
 }
