@@ -26,7 +26,7 @@ export const AnimalList = ({history}) => {
             Add Animal
       </button>
 
-      <div className="animals">
+      <div className="animal">
           {
               animals.map(animal => <Link to={`/animals/detail/${animal.id}`}>
                     { animal.name }
@@ -34,23 +34,6 @@ export const AnimalList = ({history}) => {
               )
           }
       </div>
-{/* 
-    <section className="animals">
-      {animals.map((animal) => {
-        return (
-          <div className="animal" id={`animal--${animal.id}`}>
-            <div className="animal__name">Name: {animal.name}</div>
-            <div className="animal__breed">Breed: {animal.breed}</div>
-            <div className="animal__location">
-              Location: {animal.location.name}
-            </div>
-            <div className="animal__location">
-              Customer: {animal.customer.name}
-            </div>
-          </div>
-        );
-      })}
-    </section> */}
     </>
   );
 };

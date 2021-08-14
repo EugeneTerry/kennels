@@ -6,8 +6,12 @@
 }
 
 .animal {
+  display: flex;
+  flex-wrap: wrap;
   flex-basis: 28%;
   margin: 1em;
   padding: 1em;
+  flex-direction: column;
   border: 1px solid goldenrod;
+  justify-content: space-between;
 }
