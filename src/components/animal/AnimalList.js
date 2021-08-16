@@ -22,11 +22,13 @@ export const AnimalList = () => {
       <button onClick={() => history.push("/animals/create")}>
         Add Animal
       </button>
-        <div className="animals">
-          {animals.map((animal) => (
-            <Link className="animal" to={`/detail/${animal.id}`}>{animal.name}</Link>
-          ))}
-        </div>
+      <div className="animals">
+        {animals.map((animal) => (
+          <Link className="animal" to={`/detail/${animal.id}`}>
+            {animal.name}
+          </Link>
+        ))}
+      </div>
     </>
   );
 };
