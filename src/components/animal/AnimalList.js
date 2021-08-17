@@ -13,6 +13,7 @@ export const AnimalList = () => {
   //useEffect - reach out to the world for something
   useEffect(() => {
     console.log("AnimalList: useEffect - getAnimals");
+    debugger
     getAnimals();
   }, []);
 

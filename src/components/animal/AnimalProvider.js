@@ -15,6 +15,13 @@ export const AnimalProvider = (props) => {
       .then(setAnimals);
   };
 
+  const getAnimalById = (animalId) => {
+    return fetch(
+      `http://localhost:8088/animals/${animalId}`)
+      .then((res) => res.json())
+  };
+
+
   const addAnimal = (animal) => {
     return fetch("http://localhost:8088/animals", {
       method: "POST",
@@ -26,6 +33,19 @@ export const AnimalProvider = (props) => {
       .then((response) => response.json())
       .then(getAnimals());
   };
+
+  // this call adds edits to your api
+  const updateAnimal = animal => {
+    return fetch(`http://localhost:8088/animals/${animal.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(animal)
+    })
+      .then(getAnimals)
+  }
+  
 
   const releaseAnimal = animalId => {
     return fetch(`http://localhost:8088/animals/${animalId}`, {
@@ -47,7 +67,9 @@ export const AnimalProvider = (props) => {
         animals,
         getAnimals,
         addAnimal,
-        releaseAnimal
+        releaseAnimal,
+        updateAnimal,
+        getAnimalById
       }}
     >
       {props.children}

@@ -3,10 +3,10 @@ import { LocationContext } from "../Location/LocationProvider";
 import { AnimalContext } from "./AnimalProvider";
 import { CustomerContext } from "../Customers/CustomerProvider";
 import "./Animal.css";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 export const AnimalForm = () => {
-  const { addAnimal } = useContext(AnimalContext);
+  const { addAnimal, getAnimalById, updateAnimal } = useContext(AnimalContext);
   const { locations, getLocations } = useContext(LocationContext);
   const { customers, getCustomers } = useContext(CustomerContext);
 
@@ -16,36 +16,59 @@ export const AnimalForm = () => {
     customerId: 0,
     locationId: 0,
   });
-  const history = useHistory();
 
-  useEffect(() => {
-    getCustomers().then(getLocations);
-  }, []);
+  const[isLoading, setIsLoading] = useState(true);
+  const {animalId} = useParams()
+  const history = useHistory();
 
   const handleControlledInputChange = (event) => {
     const newAnimal = { ...animal };
     newAnimal[event.target.id] = event.target.value;
     setAnimal(newAnimal);
   };
+  
 
-  const handleClickSaveAnimal = (event) => {
-    event.preventDefault(); //Prevents the browser from submitting the form
-
-    const locationId = parseInt(animal.locationId);
-    const customerId = parseInt(animal.customerId);
-
-    if (locationId === 0 || customerId === 0) {
-      window.alert("Please select a location and a customer");
+  
+  
+  const handleClickSaveAnimal = () => {
+    if (parseInt(animal.locationId) === 0) {
+      window.alert("Please select a location")
     } else {
-      const newAnimal = {
-        name: animal.name,
-        breed: animal.breed,
-        customerId: customerId,
-        locationId: locationId,
+      setIsLoading(true);
+      if (animalId){
+        updateAnimal({
+          id: animal.id,
+          name: animal.name,
+          breed: animal.breed,
+          locationId: parseInt(animal.locationId),
+          customerId: parseInt(animal.customerId)
+        })
+        .then(() => history.push(`/animals/detail/${animal.id}`))
+      } else {
+        addAnimal({
+          name: animal.name,
+          breed: animal.breed,
+          locationId: parseInt(animal.locationId),
+          customerId: parseInt(animal.customerId)
+        })
+          .then(()=> history.push("/animals"))
+        }
       };
-      addAnimal(newAnimal).then(() => history.push("/animals"));
     }
-  };
+
+    useEffect(() => {
+      getCustomers().then(getLocations).then(() => {
+        if (animalId){
+          getAnimalById(animalId)
+          .then(animal => {
+              setAnimal(animal)
+              setIsLoading(false)
+          })
+        } else {
+          setIsLoading(false)
+        }
+      })
+    }, [])
 
   return (
     <form className="animalForm">
@@ -118,9 +141,14 @@ export const AnimalForm = () => {
           </select>
         </div>
       </fieldset>
-      <button className="btn btn-primary" onClick={handleClickSaveAnimal}>
-        Save Animal
+      <button className="btn btn-primary"
+        disabled={isLoading}
+        onClick={event =>{
+          event.preventDefault()
+          handleClickSaveAnimal()
+        }}>
+        {animalId ? <>Save Animal</> : <>Add Animal</>}
       </button>
-    </form>
-  );
-};
+      </form>
+    )
+}
