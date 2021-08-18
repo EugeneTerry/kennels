@@ -1,5 +1,6 @@
 .animals {
   
+  width: 20rem;
   flex-wrap: wrap;
   justify-content: space-between;
   flex-direction: column;
@@ -19,5 +20,8 @@
 .input--wide {
   display: flex;
   border: 5px solid goldenrod;
-  
+}
+
+.animal__buttons{
+  width: 10rem;
 }
