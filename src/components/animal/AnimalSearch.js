@@ -7,11 +7,10 @@ export const AnimalSearch = () => {
 
   return (
     <>
-      Animal search:
       <input type="text"
         className="input--wide"
         onKeyUp={(event) => setSearchTerms(event.target.value)}
-        placeholder="Search for an animal... " />
+        placeholder="Search for animal... " />
     </>
   )
 }
