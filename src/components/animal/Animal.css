@@ -8,7 +8,7 @@
 .animal {
   display: flex;
   flex-wrap: wrap;
-  flex-basis: 28%;
+  flex-basis: 5%;
   margin: 1em;
   padding: 1em;
   flex-direction: column;
