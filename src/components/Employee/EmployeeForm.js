@@ -11,6 +11,9 @@ export const EmployeeForm = () => {
   const [employee, setEmployee] = useState({
     name: "",
     locationId: 0,
+  
+  
+  
   });
   const history = useHistory();
 
