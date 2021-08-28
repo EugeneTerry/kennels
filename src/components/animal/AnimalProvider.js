@@ -11,7 +11,7 @@ export const AnimalProvider = (props) => {
 
   const getAnimals = () => {
     return fetch(
-      "http://localhost:8088/animals?_expand=location&_expand=customer&_sort=location.id"
+      "https://nss-kennels-api.herokuapp.com/animals?_expand=location&_expand=customer&_sort=location.id"
     )
       .then((res) => res.json())
       .then(setAnimals);
@@ -19,13 +19,13 @@ export const AnimalProvider = (props) => {
 
   const getAnimalById = (animalId) => {
     return fetch(
-      `http://localhost:8088/animals/${animalId}`)
+      `https://nss-kennels-api.herokuapp.com/animals/${animalId}`)
       .then((res) => res.json())
   };
 
 
   const addAnimal = (animal) => {
-    return fetch("http://localhost:8088/animals", {
+    return fetch("https://nss-kennels-api.herokuapp.com/animals", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -38,7 +38,7 @@ export const AnimalProvider = (props) => {
 
   // this call adds edits to your api
   const updateAnimal = animal => {
-    return fetch(`http://localhost:8088/animals/${animal.id}`, {
+    return fetch(`https://nss-kennels-api.herokuapp.com/animals/${animal.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
@@ -50,7 +50,7 @@ export const AnimalProvider = (props) => {
   
 
   const releaseAnimal = animalId => {
-    return fetch(`http://localhost:8088/animals/${animalId}`, {
+    return fetch(`https://nss-kennels-api.herokuapp.com/animals/${animalId}`, {
         method: "DELETE"
     })
         .then(getAnimals)

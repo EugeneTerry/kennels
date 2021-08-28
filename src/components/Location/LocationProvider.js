@@ -5,12 +5,12 @@ export const LocationProvider = (props) => {
   const [locations, setLocations] = useState([]);
 
   const getLocations = () => {
-    return fetch("http://localhost:8088/locations")
+    return fetch("https://nss-kennels-api.herokuapp.com/locations")
       .then((res) => res.json())
       .then(setLocations);
   };
   const addLocation = (locationObj) => {
-    return fetch("http://localhost:8088/locations", {
+    return fetch("https://nss-kennels-api.herokuapp.com/locations", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
