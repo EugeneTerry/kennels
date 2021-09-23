@@ -7,6 +7,6 @@
 .employee{
   flex-basis: 28%;
   margin: 1em;
-  padding: 1em;
+  padding: 1.5em;
   border: 1px solid goldenrod;;
 }
